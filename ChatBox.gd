@@ -10,7 +10,7 @@ var groups = [
 	{'name': 'Global', 'color': '#ffffff'}
 ]
 var group_index = 0
-var user_name = 'Kilo'
+var user_name = 'Player'
 
 func _ready():
 	lineEdit.connect("text_entered", self,'text_entered')

@@ -26,12 +26,6 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[color=#00abc7]
-[user]: Hello world
-[Player2]: How do you turn this on?[/color]"
-text = "
-[user]: Hello world
-[Player2]: How do you turn this on?"
 scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
