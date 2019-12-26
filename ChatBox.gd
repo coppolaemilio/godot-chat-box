@@ -1,8 +1,8 @@
 extends Control
 
-onready var groupLabel = get_node("VBoxContainer/HBoxContainer/Label")
-onready var lineEdit = get_node("VBoxContainer/HBoxContainer/LineEdit")
 onready var chatLog = get_node("VBoxContainer/RichTextLabel")
+onready var inputLabel = get_node("VBoxContainer/HBoxContainer/Label")
+onready var inputField = get_node("VBoxContainer/HBoxContainer/LineEdit")
 
 var groups = [
 	{'name': 'Team', 'color': '#00abc7'},
@@ -13,15 +13,15 @@ var group_index = 0
 var user_name = 'Player'
 
 func _ready():
-	lineEdit.connect("text_entered", self,'text_entered')
+	inputField.connect("text_entered", self,'text_entered')
 	change_group(0)
 
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_ENTER:
-			lineEdit.grab_focus()
+			inputField.grab_focus()
 		if event.pressed and event.scancode == KEY_ESCAPE:
-			lineEdit.release_focus()
+			inputField.release_focus()
 		if event.pressed and event.scancode == KEY_TAB:
 			change_group(1)
 
@@ -29,8 +29,8 @@ func change_group(value):
 	group_index += value
 	if group_index > (groups.size() - 1):
 		group_index = 0
-	groupLabel.text = '[' + groups[group_index]['name'] + ']'
-	groupLabel.set("custom_colors/font_color", Color(groups[group_index]['color']))
+	inputLabel.text = '[' + groups[group_index]['name'] + ']'
+	inputLabel.set("custom_colors/font_color", Color(groups[group_index]['color']))
 	
 func add_message(username, text, group = 0, color = ''):
 	chatLog.bbcode_text += '\n' 
@@ -47,10 +47,10 @@ func add_message(username, text, group = 0, color = ''):
 func text_entered(text):
 	if text =='/h':
 		add_message('', 'There is no help message yet!', 0, '#ff5757')
-		lineEdit.text = ''		
+		inputField.text = ''		
 		return
 	if text != '':
 		add_message(user_name, text, group_index)
 		# Here you have to send the message to the server
 		print(text)
-		lineEdit.text = ''
+		inputField.text = ''
