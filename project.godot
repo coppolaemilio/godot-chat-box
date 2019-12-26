@@ -19,6 +19,10 @@ config/name="Chatbox"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+icon=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
